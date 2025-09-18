@@ -1,0 +1,96 @@
+{
+    "Super Pagamentos": {
+        "path": "C:/projetos/super-pagamentos",
+        "options": {
+            "Front Dashboard": {
+                "type": "execute",
+                "actions": [
+                    {
+                        "type": "open_cursor",
+                        "path": "front-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm install",
+                        "path": "front-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm start",
+                        "path": "front-dashboard"
+                    }
+                ]
+            },
+            "Back Dashboard": {
+                "type": "execute",
+                "actions": [
+                    {
+                        "type": "open_cursor",
+                        "path": "back-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm install",
+                        "path": "back-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm run dev",
+                        "path": "back-dashboard"
+                    }
+                ]
+            },
+            "Back API": {
+                "type": "execute",
+                "actions": [
+                    {
+                        "type": "open_cursor",
+                        "path": "back-api"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "pip install -r requirements.txt",
+                        "path": "back-api"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "python app.py",
+                        "path": "back-api"
+                    }
+                ]
+            },
+            "Todos": {
+                "type": "execute",
+                "actions": [
+                    {
+                        "type": "open_cursor",
+                        "path": "front-dashboard"
+                    },
+                    {
+                        "type": "open_cursor",
+                        "path": "back-dashboard"
+                    },
+                    {
+                        "type": "open_cursor",
+                        "path": "back-api"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm install",
+                        "path": "front-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "npm install",
+                        "path": "back-dashboard"
+                    },
+                    {
+                        "type": "run_command",
+                        "command": "pip install -r requirements.txt",
+                        "path": "back-api"
+                    }
+                ]
+            }
+        }
+    }
+}

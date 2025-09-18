@@ -28,25 +28,24 @@ Se você recebeu o erro "Python não foi encontrado", você tem 3 opções:
 
 **Para usar a versão completa com interface gráfica:**
 
-1. **Instalação automática**:
-   ```
-   instalar_python.bat
-   ```
-
-2. **Ou instalação manual**:
+1. **Instalação manual**:
    - Acesse: https://www.python.org/downloads/
    - Baixe Python 3.11+
    - **IMPORTANTE**: Marque "Add Python to PATH"
    - Instale
 
-3. **Execute**:
+2. **Execute**:
    ```
    python project_launcher.py
    ```
 
-4. **Criar executável**:
+3. **Criar executável**:
    ```
-   python build.py
+   build.bat
+   ```
+   ou
+   ```
+   python build_simple.py
    ```
 
 ---
@@ -71,7 +70,11 @@ python project_launcher.py
 
 ### 4. Criar executável
 ```cmd
-python build.py
+build.bat
+```
+ou
+```cmd
+python build_simple.py
 ```
 
 ---
@@ -80,24 +83,17 @@ python build.py
 
 ```
 project-launcher/
-├── launcher.bat              # ← Versão standalone (sem Python)
-├── configurar_projetos.bat   # ← Configurador de caminhos
-├── instalar_python.bat       # ← Instalador automático do Python
 ├── project_launcher.py       # ← Versão completa (precisa Python)
 ├── config.json              # ← Configuração dos projetos
-├── build.py                 # ← Script para criar executável
+├── build.py                 # ← Script para criar executável (original)
+├── build_simple.py          # ← Script simples para criar executável
+├── build.bat                # ← Script batch para Windows
 └── README.md                # ← Documentação completa
 ```
 
 ---
 
 ## 🎮 **Como Funciona**
-
-### Versão Standalone (launcher.bat)
-- Menu de texto no terminal
-- Configuração via configurar_projetos.bat
-- Abre projetos e executa comandos
-- **Vantagem**: Não precisa instalar nada
 
 ### Versão Completa (project_launcher.py)
 - Interface gráfica bonita
@@ -109,11 +105,6 @@ project-launcher/
 
 ## 🔧 **Configuração de Projetos**
 
-### Para launcher.bat:
-1. Execute `configurar_projetos.bat`
-2. Digite os caminhos dos seus projetos
-3. Pronto!
-
 ### Para project_launcher.py:
 1. Edite o arquivo `config.json`
 2. Configure os caminhos e comandos
@@ -124,11 +115,11 @@ project-launcher/
 ## ❓ **Problemas Comuns**
 
 ### "Python não foi encontrado"
-- Use `launcher.bat` (versão standalone)
-- Ou instale Python com `instalar_python.bat`
+- Instale Python: https://www.python.org/downloads/
+- Marque "Add Python to PATH" durante instalação
 
 ### "Caminho não encontrado"
-- Execute `configurar_projetos.bat`
+- Edite o arquivo `config.json`
 - Configure os caminhos corretos
 
 ### "Comando não reconhecido"
@@ -138,8 +129,6 @@ project-launcher/
 ---
 
 ## 🎯 **Recomendação**
-
-**Para começar rapidamente**: Use `launcher.bat`
 
 **Para uso profissional**: Instale Python e use `project_launcher.py`
 

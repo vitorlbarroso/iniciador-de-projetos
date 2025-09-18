@@ -14,12 +14,26 @@ def install_requirements():
     """Instala as dependências necessárias"""
     print("Instalando dependências...")
     try:
+        # Verificar se PyInstaller já está instalado
+        try:
+            subprocess.check_call([sys.executable, "-c", "import pyinstaller"], 
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            print("✓ PyInstaller já está instalado")
+            return True
+        except subprocess.CalledProcessError:
+            pass
+        
+        # Instalar PyInstaller
+        print("Instalando PyInstaller...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "pyinstaller"])
         print("✓ PyInstaller instalado com sucesso")
+        return True
     except subprocess.CalledProcessError as e:
         print(f"✗ Erro ao instalar PyInstaller: {e}")
         return False
-    return True
+    except Exception as e:
+        print(f"✗ Erro inesperado: {e}")
+        return False
 
 def build_executable():
     """Constrói o executável"""
@@ -27,35 +41,59 @@ def build_executable():
     
     # Comando PyInstaller
     cmd = [
-        "pyinstaller",
+        sys.executable, "-m", "PyInstaller",
         "--onefile",  # Arquivo único
         "--windowed",  # Sem console (GUI)
         "--name=ProjectLauncher",  # Nome do executável
         "--add-data=config.json;.",  # Incluir arquivo de config
-        "--icon=icon.ico",  # Ícone (se existir)
         "project_launcher.py"
     ]
     
-    # Remover parâmetro de ícone se não existir
-    if not os.path.exists("icon.ico"):
-        cmd.remove("--icon=icon.ico")
+    # Adicionar ícone se existir
+    if os.path.exists("icon.ico"):
+        cmd.insert(-1, "--icon=icon.ico")
     
     try:
+        print(f"Executando: {' '.join(cmd)}")
         subprocess.check_call(cmd)
         print("✓ Executável criado com sucesso!")
         return True
     except subprocess.CalledProcessError as e:
         print(f"✗ Erro ao criar executável: {e}")
+        print("Tentando método alternativo...")
+        return build_executable_alternative()
+    except Exception as e:
+        print(f"✗ Erro inesperado: {e}")
+        return False
+
+def build_executable_alternative():
+    """Método alternativo para construir executável"""
+    print("Tentando método alternativo...")
+    
+    try:
+        # Comando mais simples
+        cmd = [
+            sys.executable, "-m", "PyInstaller",
+            "--onefile",
+            "--name=ProjectLauncher",
+            "project_launcher.py"
+        ]
+        
+        print(f"Executando: {' '.join(cmd)}")
+        subprocess.check_call(cmd)
+        print("✓ Executável criado com sucesso (método alternativo)!")
+        return True
+    except Exception as e:
+        print(f"✗ Erro no método alternativo: {e}")
         return False
 
 def cleanup():
     """Limpa arquivos temporários"""
     print("Limpando arquivos temporários...")
     
-    # Diretórios e arquivos para remover
+    # Diretórios e arquivos para remover (NÃO remover dist!)
     cleanup_items = [
         "build",
-        "dist",
         "ProjectLauncher.spec",
         "__pycache__"
     ]
@@ -67,6 +105,12 @@ def cleanup():
             else:
                 os.remove(item)
             print(f"✓ Removido: {item}")
+    
+    # Verificar se o executável foi criado
+    if os.path.exists("dist/ProjectLauncher.exe"):
+        print("✓ Executável mantido em: dist/ProjectLauncher.exe")
+    else:
+        print("⚠️ Executável não encontrado em dist/")
 
 def main():
     """Função principal"""
