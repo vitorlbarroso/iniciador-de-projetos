@@ -1,0 +1,221 @@
+{
+    "Super Pagamentos": {
+        "path": "C:/Projetos/Super",
+        "options": {
+            "Iniciar o projeto": {
+                "type": "options",
+                "options": {
+                    "Front Dashboard": {
+                        "type": "execute",
+                        "actions": [
+                            {
+                                "type": "open_cursor",
+                                "path": "dash-super-front"
+                            },
+                            {
+                                "type": "run_command",
+                                "command": "npm run serve",
+                                "path": "dash-super-front"
+                            }
+                        ]
+                    },
+                    "Back Dashboard": {
+                        "type": "options",
+                        "options": {
+                            "Iniciar com Redis": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_wsl",
+                                        "commands": ["redis-cli"],
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    }
+                                ]
+                            },
+                            "Iniciar sem Redis": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "Back API": {
+                        "type": "options",
+                        "options": {
+                            "Iniciar com Redis": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "run_wsl",
+                                        "commands": ["redis-cli"],
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    }
+                                ]
+                            },
+                            "Iniciar sem Redis": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "Iniciar todos os projetos": {
+                        "type": "options",
+                        "options": {
+                            "Iniciar run Back API": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "dash-super-front"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run serve",
+                                        "path": "dash-super-front"
+                                    },
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_wsl",
+                                        "commands": ["redis-cli"],
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "open_terminal",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "apis-super"
+                                    }
+                                ]
+                            },
+                            "Iniciar run Back Dashboard": {
+                                "type": "execute",
+                                "actions": [
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "dash-super-front"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run serve",
+                                        "path": "dash-super-front"
+                                    },
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_wsl",
+                                        "commands": ["redis-cli"],
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "run_command",
+                                        "command": "npm run start dev",
+                                        "path": "node-apis-super"
+                                    },
+                                    {
+                                        "type": "open_postman"
+                                    },
+                                    {
+                                        "type": "open_dbeaver"
+                                    },
+                                    {
+                                        "type": "open_terminal",
+                                        "path": "apis-super"
+                                    },
+                                    {
+                                        "type": "open_cursor",
+                                        "path": "apis-super"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "Configurações": {
+                "type": "options",
+                "options": {
+
+                }
+            }
+        }
+    }
+}
